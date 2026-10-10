@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>ShortLink — URL Shortener</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="ShortLink home">
+    <img src="/static/images/shortlink.png" alt="ShortLink logo" class="logo-image">
+    <span>ShortLink</span>
+    </a>
+    <a class="docs-link" href="/docs" target="_blank" rel="noreferrer">API docs <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero">
+      <p class="eyebrow">Make links simple</p>
+      <h1>Long links.<br><span>Short stories.</span></h1>
+      <p class="hero-copy">Turn a long URL into a clean, shareable link.</p>
+    </section>
+
+    <section class="panel shorten-panel" aria-labelledby="shorten-heading">
+      <div class="panel-heading">
+        <div>
+          <p class="section-label">GET STARTED</p>
+          <h2 id="shorten-heading">Shorten a link</h2>
+        </div>
+        
+      </div>
+
+      <form id="shorten-form">
+        <label for="long-url">Paste your long URL</label>
+        <div class="url-input-wrap">
+          <span class="input-icon" aria-hidden="true">↗</span>
+          <input id="long-url" name="url" type="url" placeholder="https://example.com/a/very/long/link" required autocomplete="url">
+        </div>
+        <div class="form-bottom">
+          <div class="expiry-field">
+            <label for="expiry-days">Link expires</label>
+            <select id="expiry-days" name="expires_in_days">
+              <option value="">Never</option>
+              <option value="1">After 1 day</option>
+              <option value="7">After 7 days</option>
+              <option value="30">After 30 days</option>
+            </select>
+          </div>
+          <button class="primary-button" id="shorten-button" type="submit">Shorten URL <span aria-hidden="true">→</span></button>
+        </div>
+        <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="result-card" id="result-card" hidden>
+        <div class="result-topline"><span class="success-dot"></span> Your short link is ready</div>
+        <div class="result-link-row">
+          <a id="short-url" href="#" target="_blank" rel="noreferrer"></a>
+          <button class="copy-button" id="copy-button" type="button">Copy link</button>
+        </div>
+        <p class="original-url" id="original-url"></p>
+        <button class="text-button" id="view-stats-button" type="button">View click statistics <span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+
+    <section class="panel stats-panel" aria-labelledby="stats-heading">
+      <div class="panel-heading">
+        <div>
+          <p class="section-label">LINK INSIGHTS</p>
+          <h2 id="stats-heading">Check your stats</h2>
+        </div>
+        
+      </div>
+      <form id="stats-form" class="stats-form">
+        <label for="stats-code">Short code or short URL</label>
+        <div class="stats-input-row">
+          <input id="stats-code" name="short_code" type="text" placeholder="e.g. 2 or http://localhost:8000/redirect/2" required>
+          <button class="secondary-button" type="submit">Look up</button>
+        </div>
+        <p class="form-message" id="stats-message" role="status" aria-live="polite"></p>
+      </form>
+      <div class="stats-result" id="stats-result" hidden>
+        <div class="click-count"><span id="click-count">0</span><span>total clicks</span></div>
+        <div class="stats-details">
+          <div><span>Short code</span><strong id="detail-code">—</strong></div>
+          <div><span>Created</span><strong id="detail-created">—</strong></div>
+          <div><span>Destination</span><a id="detail-destination" href="#" target="_blank" rel="noreferrer">Open original URL ↗</a></div>
+          <div><span>Expires</span><strong id="detail-expires">Never</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <p class="privacy-note">Thank You for Choosing ShortLink!</p>
+  </main>
+
+  <footer class="footer"><img src="/static/images/shortlink.png" alt="ShortLink logo" class="logo-image"><span>Built with 💙</span></footer>
+</body>
+</html>
